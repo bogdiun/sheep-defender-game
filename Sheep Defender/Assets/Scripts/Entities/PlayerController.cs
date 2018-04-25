@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// once player is defeated make one of the enemy ships desert and become the player
 public class PlayerController : MonoBehaviour {
     // private GunSystem gunSystem; //weapon
     private Gun[] guns;
