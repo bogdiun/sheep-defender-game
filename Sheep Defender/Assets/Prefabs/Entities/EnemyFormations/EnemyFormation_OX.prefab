@@ -182,7 +182,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4277654317192416}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4277654317192416
 Transform:
@@ -194,13 +194,13 @@ Transform:
   m_LocalPosition: {x: 8, y: 8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4745907157021678}
-  - {fileID: 4142612638305496}
   - {fileID: 4772924889269142}
   - {fileID: 4834364126322822}
-  - {fileID: 4911498204115522}
   - {fileID: 4779628364501164}
+  - {fileID: 4745907157021678}
+  - {fileID: 4142612638305496}
   - {fileID: 4500757795507952}
+  - {fileID: 4911498204115522}
   - {fileID: 4742359122182288}
   - {fileID: 4396338097770472}
   m_Father: {fileID: 0}
@@ -230,7 +230,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4277654317192416}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4742359122182288
 Transform:
@@ -256,7 +256,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4277654317192416}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4772924889269142
 Transform:
@@ -269,7 +269,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4277654317192416}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4779628364501164
 Transform:
@@ -282,7 +282,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4277654317192416}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4834364126322822
 Transform:
@@ -295,7 +295,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4277654317192416}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4911498204115522
 Transform:
@@ -308,7 +308,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4277654317192416}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114119851581826686
 MonoBehaviour:
@@ -418,13 +418,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 1466472425148312, guid: 41a3be594a7fad24ca5b39df82e22bc8, type: 2}
-  - {fileID: 1466472425148312, guid: cc1c2618ee46a3a4f9d4d13b04408fea, type: 2}
   - {fileID: 1466472425148312, guid: 3d968a54fab1b124c8cf8d2d6e686b59, type: 2}
-  spawnDelay: 2.2
-  width: 12
+  - {fileID: 1466472425148312, guid: cc1c2618ee46a3a4f9d4d13b04408fea, type: 2}
+  - {fileID: 1466472425148312, guid: 41a3be594a7fad24ca5b39df82e22bc8, type: 2}
+  - {fileID: 1466472425148312, guid: b77a50b71b146df4bbc8590f5ed275f3, type: 2}
+  spawnDelay: 2
+  width: 10.6
   height: 4
-  speed: 3.8
+  speed: 4
 --- !u!114 &114947554607246162
 MonoBehaviour:
   m_ObjectHideFlags: 1

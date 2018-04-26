@@ -5,8 +5,8 @@ public class RandomGun : ProjectileGun {   //implement Gun, +Input?
         base.direction = direction;
         base.layerName = layerName;
 
-        float propability = Time.deltaTime * firingRate;
-        if (Random.value < propability) Spawn();
+        float probability = Time.deltaTime * firingRate;
+        if (Random.value < probability) Spawn();
     }
 
     public override void Stop() {

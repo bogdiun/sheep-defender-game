@@ -7,8 +7,8 @@ using UnityEngine;
 public class GamePause : MonoBehaviour {
     public static bool Enabled = false;
     public GameObject pauseMenu;
-        public GameObject pauseButton;
-    
+    public GameObject gameUI;
+
     private void Start() {
         Time.timeScale = 1f;
     }
@@ -24,13 +24,13 @@ public class GamePause : MonoBehaviour {
         Enabled = true;
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
-        pauseButton.SetActive(false);
+        gameUI.SetActive(false);
 
         Debug.Log("Pause is " + Enabled);
     }
 
     public void Resume() {
-        pauseButton.SetActive(true);
+        gameUI.SetActive(true);
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         Enabled = false;

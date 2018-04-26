@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class ProjectileGun : MonoBehaviour, Gun {
+public abstract class ProjectileGun : MonoBehaviour, IFireable {
     public Rigidbody2D projectilePrefab;
     public float firingForce;
     public float firingRate;
@@ -13,6 +13,12 @@ public abstract class ProjectileGun : MonoBehaviour, Gun {
     public void Spawn() {
         Vector3 spawnPoint = transform.position + new Vector3(direction.x, direction.y, 0f);
         Rigidbody2D projectile = Instantiate(projectilePrefab, spawnPoint, Quaternion.identity) as Rigidbody2D;
+
+        if (direction.x != 0) {
+            float rot = Vector3.Cross(direction, transform.up).z;
+            projectile.angularVelocity = -rot * 180f;
+        }
+        
         projectile.velocity = direction * firingForce;
         projectile.gameObject.layer = LayerMask.NameToLayer(layerName);
     }

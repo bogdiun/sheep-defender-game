@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4577526192940854}
   - component: {fileID: 212731480848767156}
-  - component: {fileID: 50514274875518766}
   - component: {fileID: 60909422480557834}
   - component: {fileID: 114334429530211292}
   - component: {fileID: 114406260906614640}
@@ -45,26 +44,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50514274875518766
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1466472425148312}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!60 &60909422480557834
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -137,8 +116,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 30
-  DestroyedEffect: {fileID: 198283007938724812, guid: 0ca3c0cfca37d7d4d9134456deafe81c,
+  DestroyedEffect: {fileID: 198283007938724812, guid: ad665019541bb0646b7f2279d7fd1bb4,
     type: 2}
+  DamagedEffect: {fileID: 198283007938724812, guid: 0ca3c0cfca37d7d4d9134456deafe81c,
+    type: 2}
+  targetPlayer: 0
 --- !u!114 &114406260906614640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,9 +132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4efd19ea5b23a1942aaf5764eccfde39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 50194402395638658, guid: 10f553b052a10e34caf15b3d0050521e,
+  projectilePrefab: {fileID: 50194402395638658, guid: 69ff490b6ef062e469e55d3a1f03d756,
     type: 2}
-  firingForce: 9
+  firingForce: 8
   firingRate: 0.5
 --- !u!212 &212731480848767156
 SpriteRenderer:
