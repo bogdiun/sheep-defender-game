@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour {
 
     private void Start() {
         guns = GetComponents<IFireable>();
-        damagedAt = hitPoints * 0.5f;
+        damagedAt = hitPoints * 0.25f;
         body = GetComponent<Rigidbody2D>();
         if (targetPlayer) target = GameObject.FindGameObjectWithTag("Player").transform;
     }

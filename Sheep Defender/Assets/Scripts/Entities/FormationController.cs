@@ -5,7 +5,7 @@ using UnityEngine;
 public class FormationController : MonoBehaviour {
     public GameObject[] enemyPrefabs;
     public float spawnDelay;
-    //grids etc.
+    //grids etc. TODO: update formation controller, guidelines on what should be possible
 
     public float width = 10f;
     public float height = 5f;
@@ -71,16 +71,16 @@ public class FormationController : MonoBehaviour {
     }
 
     private void SpawnNextPosition() {
-        GameObject selPrefab;
+        GameObject selectedPrefab;
         Transform next = NextFreePosition();
 
         if (next) {
             if (next.GetComponent<Position>().active) {
-                selPrefab = enemyPrefabs[Random.Range(1, 4)];
-                Instantiate(selPrefab, next.position, Quaternion.identity, next);
+                selectedPrefab = enemyPrefabs[Random.Range(1, 4)];
+                Instantiate(selectedPrefab, next.position, Quaternion.identity, next);
             } else {
-                selPrefab = enemyPrefabs[0];
-                Instantiate(selPrefab, next.position, Quaternion.identity, next);
+                selectedPrefab = enemyPrefabs[0];
+                Instantiate(selectedPrefab, next.position, Quaternion.identity, next);
 
             }
         }
@@ -88,6 +88,7 @@ public class FormationController : MonoBehaviour {
     }
 
     private void SetMovementConstraints() {
+        // constraint to leftmost and rightmost enemy on spawn and on destroy
         float cameraDistance = transform.position.z - Camera.main.transform.position.z;
         Vector3 leftBoundary = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, cameraDistance));
         Vector3 rightBoundary = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, cameraDistance));

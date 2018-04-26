@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate() {
         Vector2 localPosition = transform.position;
-        Debug.Log("enter:" + transform.position);
         //movement
         float horizontal = Input.GetAxisRaw("Horizontal");
         if (horizontal > 0) {
@@ -43,7 +42,6 @@ public class PlayerController : MonoBehaviour {
         float xClamp = Mathf.Clamp(localPosition.x, xMin, xMax);
         float yClamp = Mathf.Clamp(localPosition.y, yMin, yMax);
         transform.position = new Vector3(xClamp, yClamp, 0);
-        Debug.Log("exit:" + transform.position);
     }
 
     private void Update() {
@@ -80,15 +78,19 @@ public class PlayerController : MonoBehaviour {
         Debug.Log(projectile.name);
 
         if (projectile) {
-            if (projectile.GetComponent<FaceGun>()) Debug.Log("-30 hit");
-
+            GetComponent<SpriteRenderer>().color = new Color(0.9f, 0.2f, 0.3f);
             hitPoints -= projectile.GetDamage();
             Destroy(other.gameObject);
+            Invoke("resetColor", 0.1f);
 
             if (hitPoints <= 0) {
                 // Destroy(gameObject);
                 levelManager.LoadLevel("Lose");
             }
         }
+    }
+
+    private void resetColor() {
+        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
     }
 }
