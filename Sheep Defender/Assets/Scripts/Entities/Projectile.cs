@@ -6,8 +6,17 @@ using UnityEngine;
 public class Projectile : MonoBehaviour {
     public float damage;
 
-    public float GetDamage() {
+    public float Damage() {
         return damage;
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, transform.up);
+    }
+
+    private void FixedUpdate() {
+        // Debug.Log(this.name + ": " + GetComponent<Rigidbody2D>().velocity);
     }
 }
 

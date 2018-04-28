@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Fast Enemy
-  - Strong Enemy
+  - Enemy
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -15,10 +15,10 @@ TagManager:
   - UI
   - 
   - 
-  - Hostile Projectiles
+  - Friendly
   - Friendly Projectiles
   - Hostile
-  - Friendly
+  - Hostile Projectiles
   - 
   - 
   - 
