@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 95024872774253066}
   - component: {fileID: 114334429530211292}
   - component: {fileID: 114767319537856424}
-  - component: {fileID: 114617428249824524}
   m_Layer: 10
   m_Name: EnemyStealthy
   m_TagString: Enemy
@@ -124,25 +123,6 @@ MonoBehaviour:
     type: 2}
   fxDamaged: {fileID: 198283007938724812, guid: 0ca3c0cfca37d7d4d9134456deafe81c,
     type: 2}
---- !u!114 &114617428249824524
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1466472425148312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 019ad4f96460160418a211d49285e98d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 50194402395638658, guid: 19bf88c2cc54acc4280d3c180210a26d,
-    type: 2}
-  pewpewClip: {fileID: 0}
-  firingForce: 8
-  firingRate: 0.1
-  firingDelay: 1
-  isRandom: 1
-  isHoming: 0
 --- !u!114 &114767319537856424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,10 +136,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 50194402395638658, guid: db6c9428ca83fcf44b5de9deea8e0b5f,
     type: 2}
-  pewpewClip: {fileID: 8300000, guid: f59ee84f487a2964b86c681219983c4d, type: 3}
-  firingForce: 7.5
-  firingRate: 8
-  firingDelay: 3
+  audioClip: {fileID: 0}
+  firingForce: 6
+  firingRate: 6.5
+  firingDelay: 1
   isRandom: 0
   isHoming: 1
 --- !u!212 &212731480848767156
@@ -195,7 +175,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 881426a9c1538a84d8742c74e689c557, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1785021117982520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 0.35, z: 0}
+  m_LocalPosition: {x: 7.78, y: 2.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -130,9 +130,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 50194402395638658, guid: 19bf88c2cc54acc4280d3c180210a26d,
     type: 2}
-  pewpewClip: {fileID: 0}
-  firingForce: 10
-  firingRate: 0.5
+  audioClip: {fileID: 0}
+  firingForce: 9
+  firingRate: 0.3
   firingDelay: 0
   isRandom: 1
   isHoming: 0
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 50194402395638658, guid: 10f553b052a10e34caf15b3d0050521e,
     type: 2}
-  pewpewClip: {fileID: 8300000, guid: 09dac0ce39d45c649973c5551bbdccbd, type: 3}
+  audioClip: {fileID: 0}
   firingForce: 16
   firingRate: 0.35
   firingDelay: 0
@@ -203,7 +203,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c386a41363a9fca4d82efedfffa6fd64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

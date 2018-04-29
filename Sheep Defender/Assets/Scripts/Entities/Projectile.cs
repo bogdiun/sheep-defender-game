@@ -12,11 +12,7 @@ public class Projectile : MonoBehaviour {
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, transform.up);
-    }
-
-    private void FixedUpdate() {
-        // Debug.Log(this.name + ": " + GetComponent<Rigidbody2D>().velocity);
+        Gizmos.DrawRay(transform.position, transform.up*1.3f);
     }
 }
 

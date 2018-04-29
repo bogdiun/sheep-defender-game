@@ -70,7 +70,6 @@ public class PlayerController : MonoBehaviour {
         // do not hardcode.. but
         yMax = 3f;
         yMin = 0.2f;
-
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -92,8 +91,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     IEnumerator ColorDamaged() {
-        GetComponent<SpriteRenderer>().color = new Color(0.9f, 0.2f, 0.3f);
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+
+        sprite.color = new Color(0.9f, 0.2f, 0.3f);
         yield return new WaitForSeconds(0.18f);
-        GetComponent<SpriteRenderer>().color = Color.white;
+        sprite.color = Color.white;
     }
 }

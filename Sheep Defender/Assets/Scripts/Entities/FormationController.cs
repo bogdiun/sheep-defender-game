@@ -54,11 +54,10 @@ public class FormationController : MonoBehaviour {
 
     private void SpawnNextPosition() {
         Transform next = NextFreePosition();
-        if (next)
-            next.GetComponent<SpawnPosition>().Spawn();
+
+        if (next) next.GetComponent<SpawnPosition>().Spawn();
         if (doRespawn) {    //temp
-            if (NextFreePosition())
-                Invoke("SpawnNextPosition", spawnDelay);   //or respawnRate
+            if (NextFreePosition()) Invoke("SpawnNextPosition", spawnDelay);   //or respawnRate
             else doRespawn = false;
         }
     }
@@ -66,15 +65,19 @@ public class FormationController : MonoBehaviour {
     private Transform NextFreePosition() {
         //or just GetFreePos and then select one in a desired order
         foreach (Transform child in transform) {
-            if (child.childCount == 0 && child.gameObject.activeSelf) return child;
+            if (child.gameObject.activeSelf && child.childCount == 0) {
+                return child;
+            }
         }
         return null;
     }
 
     private bool FormationDestroyed() {
-        //aka GetFreePos == Pos.count
+        //aka GetFreePos == Pos.count, this however looks only until a child is found
         foreach (Transform child in transform) {
-            if (child.childCount > 0) return false;
+            if (child.gameObject.activeSelf && child.childCount > 0) {
+                return false;
+            }
         }
         return true;
     }

@@ -15,7 +15,9 @@ public class EnemyController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        foreach (IFireable loaded in guns) { loaded.Fire("Player"); }
+        foreach (IFireable loaded in guns) {
+            loaded.Fire("Player");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other) {

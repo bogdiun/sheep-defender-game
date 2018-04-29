@@ -134,8 +134,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 50194402395638658, guid: 69ff490b6ef062e469e55d3a1f03d756,
     type: 2}
   pewpewClip: {fileID: 8300000, guid: f59ee84f487a2964b86c681219983c4d, type: 3}
-  firingForce: 9
-  firingRate: 1.3
+  firingForce: 8
+  firingRate: 1.5
   firingDelay: 1.5
   isRandom: 0
   isHoming: 0
@@ -172,7 +172,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 9fc775e551e77be43b79941602d65a31, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

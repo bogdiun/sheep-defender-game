@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotForce: 270
-  duration: 3.5
+  duration: 5
 --- !u!114 &114334429530211292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,11 +136,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1466472425148312}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37740adce98790b4ba7bbdb57052327d, type: 3}
+  m_Script: {fileID: 11500000, guid: cb1a825d387e6184ea1b67c6de81bf5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firingForce: 5
-  firingDelay: 1.3
+  firingForce: 6
+  firingDelay: 3
 --- !u!114 &114848036242139990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,7 +186,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 3845b9cf1cbba8c43814b36e5323c9b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

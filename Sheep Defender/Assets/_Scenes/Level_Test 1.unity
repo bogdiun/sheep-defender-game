@@ -5875,38 +5875,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 61836930920201980, guid: 2f856fd97f008d74bbc37a42b8f020ca,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 61836930920201980, guid: 2f856fd97f008d74bbc37a42b8f020ca,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 4987967401231264, guid: 2f856fd97f008d74bbc37a42b8f020ca, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4987967401231264, guid: 2f856fd97f008d74bbc37a42b8f020ca, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4987967401231264, guid: 2f856fd97f008d74bbc37a42b8f020ca, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61836930920201980, guid: 2f856fd97f008d74bbc37a42b8f020ca,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61836930920201980, guid: 2f856fd97f008d74bbc37a42b8f020ca,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f856fd97f008d74bbc37a42b8f020ca, type: 2}
   m_IsPrefabParent: 0
