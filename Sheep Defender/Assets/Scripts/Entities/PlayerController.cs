@@ -4,20 +4,19 @@ using System.Collections;
 // once player is defeated make one of the enemy ships desert and become the player
 public class PlayerController : MonoBehaviour {
     // private GunSystem gunSystem; temporarily will be built in 
+    [System.Serializable]
+    public class Constraint { public Vector2 min, max; }
+    public Constraint constraint;
+
     private LevelManager levelManager;
     private IFireable[] weapons;
     public GameObject fxDestroyed;
 
-    private IFireable primary;
-    private IFireable secondary;
+    private IFireable primary, secondary;
 
     public float hitPoints;
     public float moveSpeed;
 
-    private float xMin;
-    private float xMax;
-    private float yMin;
-    private float yMax;
 
     void Start() {
         levelManager = GameObject.FindObjectOfType<LevelManager>();
@@ -29,16 +28,15 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        //movement
-        Vector2 localPosition = transform.position;
+        //move
+        float x = Time.deltaTime * moveSpeed * Input.GetAxisRaw("Horizontal");
+        float y = Time.deltaTime * moveSpeed * 0.8f * Input.GetAxisRaw("Vertical");
+        transform.Translate(new Vector2(x, y));
 
-        localPosition.y += Time.deltaTime * moveSpeed * 0.8f * Input.GetAxisRaw("Vertical");
-        localPosition.x += Time.deltaTime * moveSpeed * Input.GetAxisRaw("Horizontal");
-
-        float xClamp = Mathf.Clamp(localPosition.x, xMin, xMax);
-        float yClamp = Mathf.Clamp(localPosition.y, yMin, yMax);
-
-        transform.position = new Vector3(xClamp, yClamp, 0);
+        //constrain movement
+        x = Mathf.Clamp(transform.position.x, constraint.min.x, constraint.max.x);
+        y = Mathf.Clamp(transform.position.y, constraint.min.y, constraint.max.y);
+        transform.position = new Vector2(x, y);
     }
 
     private void Update() {
@@ -60,16 +58,12 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void SetMovementConstraints() {
-        float cameraDistance = transform.position.z - Camera.main.transform.position.z;
-        Vector3 leftBoundary = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, cameraDistance));
-        Vector3 rightBoundary = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, cameraDistance));
+        Camera camera = Camera.main;
+        float cameraDistance = transform.position.z - camera.transform.position.z;  //unnecessary in ortho
+        constraint.min = Vector2.one + (Vector2) camera.ViewportToWorldPoint(new Vector3(0, 0, cameraDistance));
+        constraint.max = -Vector2.one + (Vector2) camera.ViewportToWorldPoint(new Vector3(1, 1, cameraDistance));
 
-        xMax = rightBoundary.x - 1f;
-        xMin = leftBoundary.x + 1f;
-
-        // do not hardcode.. but
-        yMax = 3f;
-        yMin = 0.2f;
+        constraint.max.y = constraint.max.y * 0.3f; //30% of camera view height
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -92,8 +86,8 @@ public class PlayerController : MonoBehaviour {
 
     IEnumerator ColorDamaged() {
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-
         sprite.color = new Color(0.9f, 0.2f, 0.3f);
+
         yield return new WaitForSeconds(0.18f);
         sprite.color = Color.white;
     }

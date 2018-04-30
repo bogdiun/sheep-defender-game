@@ -3,62 +3,61 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FormationController : MonoBehaviour {
-    // private GameObject[] enemyPrefabs;
+    [System.Serializable]
+    public class Constraint { public Vector2 min, max; }
+    public Constraint constraint;
+
     public float spawnDelay = 2f;
+    private bool moveRight;
 
     public float speed;
-    public float width = 10f;
-    public float height = 5f;
-
-    private float xMax;
-    private float xMin;
-    private bool moveRight = true;
+    public float width;
+    public float height;
 
     //temp
-    bool doRespawn = true;
+    bool respawn = true;
 
     void Start() {
         SetMovementConstraints();
         SpawnNextPosition();
+        moveRight = (Random.value >= 0.5f);
     }
 
     void FixedUpdate() {
-        // movement, TODO:Constraint based on the current live formation
-        if (transform.position.x >= xMax) {
-            moveRight = false;
-        } else if (transform.position.x <= xMin) {
-            moveRight = true;
-        }
+        if (transform.position.x >= constraint.max.x) moveRight = false;
+        else if (transform.position.x <= constraint.min.x) moveRight = true;
 
-        if (moveRight) {
-            transform.position += Vector3.right * speed * Time.deltaTime;
-        } else {
-            transform.position += Vector3.left * speed * Time.deltaTime;
-        }
+        // movement
+        if (moveRight) transform.Translate(Vector2.right * speed * Time.deltaTime);
+        else transform.Translate(Vector2.left * speed * Time.deltaTime);
 
+        // constrain alternative
+        // float x = Mathf.Clamp(transform.position.x, constraint.min.x, constraint.max.x);
+        // transform.position = new Vector3(x, transform.position.y);
+    }
+
+    private void Update() {
         if (FormationDestroyed()) {
-            Debug.Log("Formation Destroyed");
-            // BossEnable
-            foreach (Transform child in transform) {
+            float random = Random.Range(constraint.min.x, constraint.max.x);
+            transform.position = new Vector2(random, transform.position.y);
+            respawn = true;
+
+            foreach (Transform child in transform) {        // BossEnable 
                 if (!child.gameObject.activeSelf) {
                     child.gameObject.SetActive(true);
                 }
             }
-            doRespawn = true;
             SpawnNextPosition();
         }
-
-        // float xClamp = Mathf.Clamp(transform.position.x, xMin, xMax);
-        // transform.position = new Vector3(xClamp, transform.position.y);
     }
 
     private void SpawnNextPosition() {
         Transform next = NextFreePosition();
 
         if (next) next.GetComponent<SpawnPosition>().Spawn();
-        if (doRespawn) {    //temp
+        if (respawn) {    //temp
             if (NextFreePosition()) Invoke("SpawnNextPosition", spawnDelay);   //or respawnRate
-            else doRespawn = false;
+            else respawn = false;
         }
     }
 
@@ -83,13 +82,15 @@ public class FormationController : MonoBehaviour {
     }
 
     private void SetMovementConstraints() {
-        float cameraDistance = transform.position.z - Camera.main.transform.position.z;
-        Vector3 leftBoundary = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, cameraDistance));
-        Vector3 rightBoundary = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, cameraDistance));
+        Camera camera = Camera.main;
+        float cameraDistance = transform.position.z - camera.transform.position.z;  //unnecessary in ortho
+        constraint.min = Vector2.one + (Vector2) camera.ViewportToWorldPoint(new Vector3(0, 0, cameraDistance));
+        constraint.max = -Vector2.one + (Vector2) camera.ViewportToWorldPoint(new Vector3(1, 1, cameraDistance));
+        constraint.min.y = constraint.max.y * 0.4f; //min max y is set differently to player/enemy.
 
-        xMax = rightBoundary.x - width / 2;
-        xMin = leftBoundary.x + width / 2;
-        // TODO: constraint to leftmost and rightmost enemy on spawn and on destroy
+        // formation padding, should constraint to leftmost and rightmost enemy on it's spawn/destroy
+        constraint.max.x -= width / 2;
+        constraint.min.x += width / 2;
     }
 
     public void OnDrawGizmos() {
