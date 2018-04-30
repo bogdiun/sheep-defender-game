@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114848036242139990}
   - component: {fileID: 114538294344204626}
   - component: {fileID: 114285233586596380}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: EnemyKamikadze
   m_TagString: Enemy
   m_Icon: {fileID: 0}

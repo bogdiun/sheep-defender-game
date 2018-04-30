@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HomingBehaviour : MonoBehaviour {
     // could it implement IFireable, should it be an IHoming

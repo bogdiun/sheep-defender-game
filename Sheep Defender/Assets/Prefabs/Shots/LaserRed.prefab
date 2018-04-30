@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 61188917936394004}
   - component: {fileID: 114077404802569900}
   m_Layer: 0
-  m_Name: LaserBlue
+  m_Name: LaserRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1093522002122914}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf3f15f294eaee4791577ae6ef08df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 2
 --- !u!212 &212116868054050958
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -134,7 +134,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 2dc19ecac5aa22a45a014c1b8abd23a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0c1562b6509a3f342ab81b6220b0d424, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

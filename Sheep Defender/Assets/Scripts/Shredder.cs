@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Shredder : MonoBehaviour {
+    public LayerMask toShred;
 
     void OnTriggerExit2D(Collider2D other) {
-        // Debug.Log("Shredding "+other.name);
-        Destroy(other.gameObject);
+        if (toShred == (toShred | (1 << other.gameObject.layer))) {
+            Destroy(other.gameObject);
+            Debug.Log("Shredding " + other.name);
+        }
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 //remember that changing timeScale is Global (not reset on new scene)
 public class GamePause : MonoBehaviour {

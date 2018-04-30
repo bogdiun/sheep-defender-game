@@ -2,10 +2,10 @@ using System.Collections;
 using UnityEngine;
 
 // as IFireable, IProjectile, IHasTarget, etc.?
-public class HomingGun : MonoBehaviour, IFireable {
+public class HomingGun : MonoBehaviour, IShoot {
     private HomingBehaviour behaviour;
     private string targetTag;
-    
+
     public float firingForce;
     public float firingDelay;
     private bool isFiring = false;
@@ -16,7 +16,7 @@ public class HomingGun : MonoBehaviour, IFireable {
         behaviour = GetComponent<HomingBehaviour>();
     }
 
-    public void Fire(string targetTag) {
+    public void Shoot(string targetTag) {
         this.targetTag = targetTag;
         if (!isFiring) StartCoroutine(Delay(firingDelay));
     }
@@ -27,10 +27,10 @@ public class HomingGun : MonoBehaviour, IFireable {
     }
 
     private IEnumerator Delay(float time) {
+        isFiring = true;
         yield return new WaitForSeconds(time);
         GetComponent<Animator>().applyRootMotion = true;
         behaviour.Init(firingForce, targetTag);
-        isFiring = true;
-        //gameObject.layer = GameObject.FindGameObjectWithTag(targetTag).layer - 1;
+        gameObject.layer = gameObject.layer + 1;
     }
 }

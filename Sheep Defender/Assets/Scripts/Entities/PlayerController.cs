@@ -9,10 +9,10 @@ public class PlayerController : MonoBehaviour {
     public Constraint constraint;
 
     private LevelManager levelManager;
-    private IFireable[] weapons;
     public GameObject fxDestroyed;
 
-    private IFireable primary, secondary;
+    private IShoot[] weapons;
+    // private IShoot primary, secondary;
 
     public float hitPoints;
     public float moveSpeed;
@@ -20,9 +20,9 @@ public class PlayerController : MonoBehaviour {
 
     void Start() {
         levelManager = GameObject.FindObjectOfType<LevelManager>();
-        weapons = GetComponents<IFireable>();
-        primary = weapons[0];
-        secondary = weapons[1];
+        weapons = GetComponents<IShoot>();
+        // primary = weapons[0];
+        // secondary = weapons[1];
 
         SetMovementConstraints();
     }
@@ -42,18 +42,20 @@ public class PlayerController : MonoBehaviour {
     private void Update() {
         // Primary Gun
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
-            primary.Fire("Enemy");
+            weapons[0].Shoot("Enemy");
+            weapons[2].Shoot("Enemy");
 
         } else if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) {
-            primary.Stop();
+            weapons[0].Stop();
+            weapons[2].Stop();
         }
 
         // Secondary Gun
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetMouseButton(1)) {
-            secondary.Fire("Enemy");
+            weapons[1].Shoot("Enemy");
 
         } else if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetMouseButtonUp(1)) {
-            secondary.Stop();
+            weapons[1].Stop();
         }
     }
 
@@ -67,20 +69,20 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        Projectile projectile = other.GetComponent<Projectile>();
-
-        if (projectile) {
-            hitPoints = hitPoints - projectile.Damage();
+        IDamage hit = other.GetComponent<IDamage>();
+        if (hit != null) {
+            hitPoints -= hit.Damage();
             StartCoroutine(ColorDamaged());
-            Destroy(other.gameObject);
-            if (hitPoints <= 0) {
-                //unlink all relations to player 
-                Instantiate(fxDestroyed, transform.position, Quaternion.identity);
-                levelManager.LoadLevel("Lose");
-                // Destroy(gameObject);
-                // StartCoroutine(levelManager.LoadLevel("Lose", 1f));
+        }
 
-            }
+        Destroy(other.gameObject);
+        if (hitPoints <= 0) {
+            //unlink all relations to player 
+            Instantiate(fxDestroyed, transform.position, transform.rotation);
+            levelManager.LoadLevel("Lose");
+            // Destroy(gameObject);
+            // StartCoroutine(levelManager.LoadLevel("Lose", 1f));
+
         }
     }
 

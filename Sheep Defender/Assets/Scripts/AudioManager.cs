@@ -1,16 +1,14 @@
-﻿using System.Collections; 
-using System.Collections.Generic; 
-using UnityEngine; 
+﻿using UnityEngine;
 
-public class AudioManager:MonoBehaviour {
-	static AudioManager instance = null; 
-	
-	private void Awake() {
+public class AudioManager : MonoBehaviour {
+    static AudioManager instance = null;
+
+    private void Awake() {
         if (instance != null) {
-            Destroy(gameObject); 
+            Destroy(gameObject);
         } else {
-            instance = this; 
-            DontDestroyOnLoad(gameObject); 
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-	}
+    }
 }
